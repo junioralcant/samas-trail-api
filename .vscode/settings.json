@@ -1,0 +1,20 @@
+{   
+    "material-icon-theme.folders.associations": {
+        "entity": "Class",
+        "entities": "Class",
+        "repositories": "Mappings",
+        "useCases": "Api",
+        "usesCases": "Api",
+        "implementations": "Vm",
+        "infra": "Container",
+        "dtos": "Job",
+        "in-memory": "Coverage",
+        "presentation": "shared",
+        "domain": "Animation",
+        "factories": "Jinja",
+        "http": "Template",
+        "adapter": "Shader",
+        "adapters": "Shader",
+        "main": "Resolver"
+    },
+}
