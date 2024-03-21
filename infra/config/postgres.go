@@ -1,6 +1,8 @@
 package config
 
 import (
+	"fmt"
+
 	"github.com/junioralcant/api-stores-go/domain/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -9,7 +11,7 @@ import (
 func InicializePg() (*gorm.DB, error) {
 	logger := GetLogger("postgres")
 
-	dsn := "host=localhost user=postgres password=toor dbname=samastrail port=5432 sslmode=disable"
+	dsn := fmt.Sprintf("host=localhost user=%s password=%s dbname=%s port=5432 sslmode=disable", GetEnvVariable("DB_USER"), GetEnvVariable("DB_PASSWORD"), GetEnvVariable("DB_NAME"))
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 

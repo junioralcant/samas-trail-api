@@ -5,6 +5,7 @@ go 1.21.7
 require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/google/uuid v1.6.0
+	github.com/joho/godotenv v1.5.1
 	github.com/stretchr/testify v1.8.3
 	github.com/tidwall/gjson v1.17.1
 	gorm.io/driver/postgres v1.5.6
