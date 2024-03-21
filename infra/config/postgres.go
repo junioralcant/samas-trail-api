@@ -11,7 +11,7 @@ import (
 func InicializePg() (*gorm.DB, error) {
 	logger := GetLogger("postgres")
 
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=5432 sslmode=disable", GetEnvVariable("DB_HOST"), GetEnvVariable("DB_USER"), GetEnvVariable("DB_PASSWORD"), GetEnvVariable("DB_NAME"))
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", GetEnvVariable("DB_HOST"), GetEnvVariable("DB_USER"), GetEnvVariable("DB_PASSWORD"), GetEnvVariable("DB_NAME"), GetEnvVariable("DB_PORT"))
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
