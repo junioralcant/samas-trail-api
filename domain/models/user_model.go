@@ -24,18 +24,19 @@ type User struct {
 
 func NewUser(name string, email string, phone string, cpf string, team string, city string, street string, postalCode string, paid *bool) *User {
 	user := User{
-		ID:         uuid.New().String(),
-		CreatedAt:  time.Now(),
-		UpdatedAt:  time.Now(),
-		Name:       name,
-		Email:      email,
-		Phone:      phone,
-		CPF:        cpf,
-		City:       city,
-		Team:       team,
-		Street:     street,
-		PostalCode: postalCode,
-		Paid:       paid,
+		ID:            uuid.New().String(),
+		CreatedAt:     time.Now(),
+		UpdatedAt:     time.Now(),
+		Name:          name,
+		Email:         email,
+		Phone:         phone,
+		CPF:           cpf,
+		City:          city,
+		Team:          team,
+		Street:        street,
+		PostalCode:    postalCode,
+		Paid:          paid,
+		IdPreferences: "",
 	}
 
 	return &user

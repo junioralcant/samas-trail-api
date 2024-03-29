@@ -22,6 +22,14 @@ func (r *UserUpdateRepository) UserUpdateRepo(id string, user models.User) (*mod
 		return nil, fmt.Errorf("error in search user: %+v", err)
 	}
 
+	if user.ID != "" {
+		userUpdated.ID = user.ID
+	}
+
+	if user.IdPreferences != "" {
+		userUpdated.IdPreferences = user.IdPreferences
+	}
+
 	if user.Name != "" {
 		userUpdated.Name = user.Name
 	}

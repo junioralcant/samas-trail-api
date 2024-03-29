@@ -38,15 +38,16 @@ func (u *UserUpdateController) Handle(ctx *gin.Context) {
 	}
 
 	user := models.User{
-		Name:       request.User.Name,
-		Email:      request.User.Email,
-		Phone:      request.User.Phone,
-		CPF:        request.User.CPF,
-		City:       request.User.City,
-		Team:       request.User.Team,
-		Street:     request.User.Street,
-		PostalCode: request.User.PostalCode,
-		Paid:       request.User.Paid,
+		Name:          request.User.Name,
+		Email:         request.User.Email,
+		Phone:         request.User.Phone,
+		CPF:           request.User.CPF,
+		City:          request.User.City,
+		Team:          request.User.Team,
+		Street:        request.User.Street,
+		PostalCode:    request.User.PostalCode,
+		Paid:          request.User.Paid,
+		IdPreferences: request.User.IdPreferences,
 	}
 
 	response, err := u.UseCase.UserUpdate(id, user)
