@@ -12,7 +12,7 @@ func Initialize() {
 
 	r := gin.Default()
 
-	r.Use(cors.Default())
+	r.Use(cors.AllowAll())
 
 	user_routes.InitUserRoutes(r, apiPrefix)
 	preference_routes.InitPreferenceRoutes(r, apiPrefix)

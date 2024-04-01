@@ -13,6 +13,7 @@ type Preference struct {
 	Category    string    `json:"category"`
 	Currency    string    `json:"currency"`
 	Price       float64   `json:"price"`
+	
 }
 
 func NewPreference(title string, description string, category string, currency string, price float64) *Preference {

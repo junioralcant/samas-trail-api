@@ -27,20 +27,28 @@ type Item struct {
 	UnitPrice   float64 `json:"unit_price"`
 }
 
+type URLS struct {
+	Success string `json:"success"`
+	Failure string `json:"failure"`
+	Pending string `json:"pending"`
+}
+
 type RequestBody struct {
-	Items []Item `json:"items"`
+	Items      []Item `json:"items"`
+	BackURLS   URLS   `json:"back_urls"`
+	AutoReturn string `json:"auto_return"`
 }
 
 func (r *PreferenceRepository) PreferenceCreateRepo(preference models.Preference) *models.Preference {
 
 	url := "https://api.mercadopago.com/checkout/preferences"
-	token := "APP_USR-3698788713698396-031409-407ff5620b593ab6635c3f4afb888985-186097166"
+	token := config.GetEnvVariable("TOKEN_MERCADO_PAGO")
 
 	// Adicionando um item ao array de items
 	item := Item{
 		Title:       preference.Title,
 		Description: preference.Description,
-		PictureURL:  "http://www.myapp.com/myimage.jpg",
+		PictureURL:  "",
 		CategoryID:  preference.Category,
 		Quantity:    1,
 		CurrencyID:  preference.Currency,
@@ -49,6 +57,12 @@ func (r *PreferenceRepository) PreferenceCreateRepo(preference models.Preference
 
 	request := RequestBody{
 		Items: []Item{item},
+		BackURLS: URLS{
+			Success: "http://localhost:3000/cadastro",
+			Failure: "http://localhost:3000/cadastro",
+			Pending: "http://localhost:3000/cadastro",
+		},
+		AutoReturn: "all",
 	}
 
 	// Converter a struct para JSON
