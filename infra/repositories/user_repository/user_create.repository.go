@@ -23,6 +23,7 @@ func (r *UserCreateRepository) UserCreateRepo(user models.User) *models.User {
 		Team:       user.Team,
 		Street:     user.Street,
 		PostalCode: user.PostalCode,
+		ShirtSize:  user.ShirtSize,
 		Paid:       user.Paid,
 	}
 

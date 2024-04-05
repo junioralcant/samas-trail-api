@@ -1,6 +1,8 @@
 package user_controller
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/junioralcant/api-stores-go/domain/contracts/user_contracts"
 	"github.com/junioralcant/api-stores-go/domain/models"
@@ -20,8 +22,9 @@ func (u *UserCreateController) Handle(ctx *gin.Context) {
 
 	ctx.BindJSON(&request)
 
-	createUser := models.NewUser(request.Name, request.Email, request.Phone, request.CPF, request.Team, request.City, request.Street, request.PostalCode, request.Paid)
+	createUser := models.NewUser(request.Name, request.Email, request.Phone, request.CPF, request.Team, request.City, request.Street, request.PostalCode, request.Paid, request.ShirtSize)
 
+	fmt.Printf("createUser: %v\n", createUser)
 	user := u.UseCase.UserCreate(*createUser)
 
 	ctx.Header("Content-Type", "application/json")

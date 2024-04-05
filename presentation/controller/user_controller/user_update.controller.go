@@ -47,6 +47,7 @@ func (u *UserUpdateController) Handle(ctx *gin.Context) {
 		Street:        request.User.Street,
 		PostalCode:    request.User.PostalCode,
 		Paid:          request.User.Paid,
+		ShirtSize:     request.User.ShirtSize,
 		IdPreferences: request.User.IdPreferences,
 	}
 
