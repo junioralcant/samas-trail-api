@@ -13,7 +13,12 @@ func NewUserCreateUseCase(repo user_contracts_infra.IUserCreateRepository) *User
 	return &UserCreateUseCase{Repo: repo}
 }
 
-func (u *UserCreateUseCase) UserCreate(user models.User) *models.User {
-	userCreated := u.Repo.UserCreateRepo(user)
-	return userCreated
+func (u *UserCreateUseCase) UserCreate(user models.User) (*models.User, error) {
+	userCreated, err := u.Repo.UserCreateRepo(user)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return userCreated, nil
 }

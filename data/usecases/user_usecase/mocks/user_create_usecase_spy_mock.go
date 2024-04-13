@@ -10,7 +10,7 @@ func NewUserCreateUseCaseSpy() *UserCreateUseCaseSpy {
 	return &UserCreateUseCaseSpy{}
 }
 
-func (u *UserCreateUseCaseSpy) UserCreate(user models.User) *models.User {
+func (u *UserCreateUseCaseSpy) UserCreate(user models.User) (*models.User, error) {
 	u.Params = user
-	return &user
+	return &user, nil
 }

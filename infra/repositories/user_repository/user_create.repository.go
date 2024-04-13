@@ -1,6 +1,8 @@
 package user_repository
 
 import (
+	"fmt"
+
 	"github.com/junioralcant/api-stores-go/domain/models"
 	"github.com/junioralcant/api-stores-go/infra/config"
 )
@@ -12,7 +14,15 @@ func NewUserCreateRepository() *UserCreateRepository {
 	return &UserCreateRepository{}
 }
 
-func (r *UserCreateRepository) UserCreateRepo(user models.User) *models.User {
+func (r *UserCreateRepository) UserCreateRepo(user models.User) (*models.User, error) {
+	existingUser := &models.User{}
+	if err := config.DB.Where("cpf = ?", user.CPF).First(existingUser).Error; err == nil {
+		fmt.Println("User already exists")
+		return nil, fmt.Errorf("CPF already exists")
+	}
+
+	fmt.Printf("existingUser: %v\n", existingUser)
+
 	userCreate := models.User{
 		ID:         user.ID,
 		Name:       user.Name,
@@ -29,8 +39,8 @@ func (r *UserCreateRepository) UserCreateRepo(user models.User) *models.User {
 
 	if err := config.DB.Create(&userCreate).Error; err != nil {
 		config.Log.Errorf("error in create user: %v", err)
-		return nil
+		return nil, err
 	}
 
-	return &userCreate
+	return &userCreate, nil
 }

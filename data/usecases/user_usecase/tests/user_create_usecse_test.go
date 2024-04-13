@@ -43,7 +43,7 @@ func TestUserCreateUseCase_correct_params(t *testing.T) {
 func TestUserCreateUseCase_correct_response(t *testing.T) {
 	useCase, _ := makeSut()
 
-	userCreated := useCase.UserCreate(userMocked)
+	userCreated, _ := useCase.UserCreate(userMocked)
 
 	assert.EqualValues(t, userCreated.Name, userMocked.Name)
 	assert.EqualValues(t, userCreated.Email, userMocked.Email)
@@ -53,7 +53,6 @@ func TestUserCreateUseCase_correct_response(t *testing.T) {
 	assert.EqualValues(t, userCreated.Team, userMocked.Team)
 	assert.EqualValues(t, userCreated.Street, userMocked.Street)
 	assert.EqualValues(t, userCreated.PostalCode, userMocked.PostalCode)
-	assert.EqualValues(t, userCreated.Paid, *userMocked.Paid)
+	assert.EqualValues(t, *userCreated.Paid, *userMocked.Paid)
 	assert.EqualValues(t, userCreated.ID, userMocked.ID)
-
 }

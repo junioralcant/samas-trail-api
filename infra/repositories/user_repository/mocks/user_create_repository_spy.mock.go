@@ -10,7 +10,7 @@ func NewUserCreateRepositorySpy() *UserCreateRepositorySpy {
 	return &UserCreateRepositorySpy{}
 }
 
-func (r *UserCreateRepositorySpy) UserCreateRepo(user models.User) *models.User {
+func (r *UserCreateRepositorySpy) UserCreateRepo(user models.User) (*models.User, error) {
 	r.Params = user
-	return &user
+	return &user, nil
 }

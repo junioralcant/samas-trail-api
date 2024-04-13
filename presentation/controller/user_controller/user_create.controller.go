@@ -2,10 +2,12 @@ package user_controller
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/junioralcant/api-stores-go/domain/contracts/user_contracts"
 	"github.com/junioralcant/api-stores-go/domain/models"
+	"github.com/junioralcant/api-stores-go/presentation/helpers"
 )
 
 type UserCreateController struct {
@@ -25,7 +27,13 @@ func (u *UserCreateController) Handle(ctx *gin.Context) {
 	createUser := models.NewUser(request.Name, request.Email, request.Phone, request.CPF, request.Team, request.City, request.Street, request.PostalCode, request.Paid, request.ShirtSize)
 
 	fmt.Printf("createUser: %v\n", createUser)
-	user := u.UseCase.UserCreate(*createUser)
+
+	user, err := u.UseCase.UserCreate(*createUser)
+
+	if err != nil {
+		helpers.SendError(ctx, http.StatusBadRequest, err.Error())
+		return
+	}
 
 	ctx.Header("Content-Type", "application/json")
 
