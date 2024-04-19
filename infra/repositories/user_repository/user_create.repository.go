@@ -36,6 +36,7 @@ func (r *UserCreateRepository) UserCreateRepo(user models.User) (*models.User, e
 		ShirtSize:  user.ShirtSize,
 		Paid:       user.Paid,
 		Distance:   user.Distance,
+		Sex:        user.Sex,
 	}
 
 	if err := config.DB.Create(&userCreate).Error; err != nil {

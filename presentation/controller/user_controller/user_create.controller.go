@@ -24,7 +24,7 @@ func (u *UserCreateController) Handle(ctx *gin.Context) {
 
 	ctx.BindJSON(&request)
 
-	createUser := models.NewUser(request.Name, request.Email, request.Phone, request.CPF, request.Team, request.City, request.Street, request.PostalCode, request.Paid, request.ShirtSize, request.Distance)
+	createUser := models.NewUser(request.Name, request.Email, request.Phone, request.CPF, request.Team, request.City, request.Street, request.PostalCode, request.Paid, request.ShirtSize, request.Distance, request.Sex)
 
 	fmt.Printf("createUser: %v\n", createUser)
 
