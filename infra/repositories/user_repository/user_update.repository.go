@@ -70,6 +70,14 @@ func (r *UserUpdateRepository) UserUpdateRepo(id string, user models.User) (*mod
 		userUpdated.ShirtSize = user.ShirtSize
 	}
 
+	if user.Distance != "" {
+		userUpdated.Distance = user.Distance
+	}
+
+	if user.Sex != "" {
+		userUpdated.Sex = user.Sex
+	}
+
 	if err := config.DB.Save(&userUpdated).Error; err != nil {
 		return nil, fmt.Errorf("error in update user: %+v", err)
 	}
