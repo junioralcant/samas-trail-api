@@ -50,6 +50,7 @@ func (u *UserUpdateController) Handle(ctx *gin.Context) {
 		ShirtSize:     request.User.ShirtSize,
 		Distance:      request.User.Distance,
 		IdPreferences: request.User.IdPreferences,
+		Age:           request.User.Age,
 	}
 
 	response, err := u.UseCase.UserUpdate(id, user)
