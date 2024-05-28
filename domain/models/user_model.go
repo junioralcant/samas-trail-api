@@ -22,10 +22,11 @@ type User struct {
 	ShirtSize     string    `json:"shirtSize"`
 	Distance      string    `json:"distance"`
 	Sex           string    `json:"sex"`
+	Age           string    `json:"age"`
 	IdPreferences string    `json:"idPreferences"`
 }
 
-func NewUser(name string, email string, phone string, cpf string, team string, city string, street string, postalCode string, paid *bool, shirtSize string, distance string, sex string) *User {
+func NewUser(name string, email string, phone string, cpf string, team string, city string, street string, postalCode string, paid *bool, shirtSize string, distance string, sex string, age string) *User {
 	user := User{
 		ID:            uuid.New().String(),
 		CreatedAt:     time.Now(),
@@ -42,6 +43,7 @@ func NewUser(name string, email string, phone string, cpf string, team string, c
 		Paid:          paid,
 		Distance:      distance,
 		Sex:           sex,
+		Age:           age,
 		IdPreferences: "",
 	}
 

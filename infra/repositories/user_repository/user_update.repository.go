@@ -78,6 +78,10 @@ func (r *UserUpdateRepository) UserUpdateRepo(id string, user models.User) (*mod
 		userUpdated.Sex = user.Sex
 	}
 
+	if user.Age != "" {
+		userUpdated.Age = user.Age
+	}
+
 	if err := config.DB.Save(&userUpdated).Error; err != nil {
 		return nil, fmt.Errorf("error in update user: %+v", err)
 	}

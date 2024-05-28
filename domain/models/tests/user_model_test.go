@@ -19,11 +19,12 @@ var userMocked = models.User{
 	Distance:   "10km",
 	ShirtSize:  "M",
 	Sex:        "F",
+	Age:        "12/23/1990",
 }
 
 func TestUserModel_NewUser(t *testing.T) {
 	paid := true
-	user := models.NewUser(userMocked.Name, userMocked.Email, userMocked.Phone, userMocked.CPF, userMocked.Team, userMocked.City, userMocked.Street, userMocked.PostalCode, &paid, userMocked.ShirtSize, userMocked.Distance, userMocked.Sex)
+	user := models.NewUser(userMocked.Name, userMocked.Email, userMocked.Phone, userMocked.CPF, userMocked.Team, userMocked.City, userMocked.Street, userMocked.PostalCode, &paid, userMocked.ShirtSize, userMocked.Distance, userMocked.Sex, userMocked.Age)
 
 	assert.EqualValues(t, user.Name, userMocked.Name)
 	assert.EqualValues(t, user.Email, userMocked.Email)
@@ -38,4 +39,6 @@ func TestUserModel_NewUser(t *testing.T) {
 	assert.EqualValues(t, user.Distance, userMocked.Distance)
 	assert.NotEmpty(t, user.ID)
 	assert.EqualValues(t, user.Sex, userMocked.Sex)
+	assert.EqualValues(t, user.Sex, userMocked.Sex)
+	assert.EqualValues(t, user.Age, userMocked.Age)
 }
