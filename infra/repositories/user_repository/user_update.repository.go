@@ -82,6 +82,10 @@ func (r *UserUpdateRepository) UserUpdateRepo(id string, user models.User) (*mod
 		userUpdated.Age = user.Age
 	}
 
+	if !user.CreatedAt.IsZero() {
+		userUpdated.CreatedAt = user.CreatedAt
+	}
+
 	if err := config.DB.Save(&userUpdated).Error; err != nil {
 		return nil, fmt.Errorf("error in update user: %+v", err)
 	}

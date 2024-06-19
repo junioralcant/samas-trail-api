@@ -51,6 +51,7 @@ func (u *UserUpdateController) Handle(ctx *gin.Context) {
 		Distance:      request.User.Distance,
 		IdPreferences: request.User.IdPreferences,
 		Age:           request.User.Age,
+		CreatedAt:     request.User.CreatedAt,
 	}
 
 	response, err := u.UseCase.UserUpdate(id, user)
