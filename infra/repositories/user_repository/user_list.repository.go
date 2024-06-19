@@ -15,7 +15,7 @@ func NewUserListRepository() *UserListAllRepository {
 func (r *UserListAllRepository) UserListAllRepo() []models.User {
 	users := []models.User{}
 
-	if err := config.DB.Find(&users).Error; err != nil {
+	if err := config.DB.Order("created_at ASC").Find(&users).Error; err != nil {
 		config.Log.Errorf("error in list openings: %v", err)
 	}
 
